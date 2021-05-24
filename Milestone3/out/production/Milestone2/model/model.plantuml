@@ -1,0 +1,116 @@
+@startuml
+
+title Library Management System\n
+
+  namespace model {
+    class model.Book {
+        - ID : int
+        - ISBN : String
+        - author : String
+        {static} - booksAdded : int
+        - genre : String
+        - name : String
+        - publisher : String
+        - year : long
+        + Book()
+        + equals()
+        + getAuthor()
+        + getGenre()
+        + getID()
+        + getISBN()
+        + getName()
+        + getPublisher()
+        + getYear()
+        + setAuthor()
+        + setGenre()
+        + setISBN()
+        + setName()
+        + setPublisher()
+        + setYear()
+    }
+  }
+  
+
+  namespace model {
+    class model.Library {
+        + books : ArrayList<Book>
+        + msgLog : ArrayList<String>
+        + transactions : ArrayList<Transaction>
+        + users : ArrayList<User>
+        - MAX_BOOK_LIMIT : int
+        - MAX_LOAN_DAYS : int
+        + Library()
+        + addBook()
+        + addTransaction()
+        + addUser()
+        + collectFine()
+        + getBook()
+        + getBorrowCount()
+        + getDueDate()
+        + getUser()
+        + isAvailable()
+        + issueBook()
+        + printResults()
+        + returnBook()
+        + searchBook()
+        - computeFine()
+    }
+  }
+  
+
+
+  
+
+  namespace model {
+    class model.Transaction {
+        - bookID : int
+        - issueDate : Date
+        - status : boolean
+        - userID : int
+        + Transaction()
+        + getBookID()
+        + getIssueDate()
+        + getUserID()
+        + isStatus()
+        + setBookID()
+        + setIssueDate()
+        + setStatus()
+        + setUserID()
+    }
+  }
+  
+
+  namespace model {
+    class model.User {
+        - ID : int
+        - address : String
+        - balance : double
+        - dateOfBirth : LocalDate
+        - email : String
+        - isStudent : boolean
+        - name : String
+        {static} - usersAdded : int
+        + User()
+        + getAddress()
+        + getBalance()
+        + getDateOfBirth()
+        + getEmail()
+        + getID()
+        + getName()
+        + getStudent()
+        + setAddress()
+        + setBalance()
+        + setDateOfBirth()
+        + setEmail()
+        + setName()
+        + setStudent()
+    }
+  }
+  
+
+model.Library "1" *-- "many" model.Book : contains
+model.Library "1" *-- "many" model.User : contains
+model.Library "1" *-- "many" model.Transaction : contains
+
+
+@enduml
