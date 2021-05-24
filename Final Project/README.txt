@@ -1,0 +1,1 @@
+A simplified library system in Java, utilizing JavaFX for the GUI.
